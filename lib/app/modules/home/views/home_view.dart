@@ -19,30 +19,32 @@ class HomeView extends StatelessWidget {
       key: _key,
       drawerEnableOpenDragGesture: !Responsive.isDesktop(context),
       drawer: SideDrawer(),
-      body: Responsive(
-        mobile: Container(
-          child: Header(),
-        ),
-        tablet: Container(
-          child: Header(),
-        ),
-        desktop: Container(
-          child: Row(
-            children: [
-              SideDrawer(),
-              Expanded(
-                child: Container(
-                  child: Column(
-                    children: [
-                      const Header(),
-                      Expanded(
-                        child: Container(),
-                      ),
-                    ],
+      body: SafeArea(
+        child: Responsive(
+          mobile: Container(
+            child: Header(),
+          ),
+          tablet: Container(
+            child: Header(),
+          ),
+          desktop: Container(
+            child: Row(
+              children: [
+                SideDrawer(),
+                Expanded(
+                  child: Container(
+                    child: Column(
+                      children: [
+                        const Header(),
+                        Expanded(
+                          child: Container(),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
