@@ -49,6 +49,9 @@ class Header extends StatelessWidget {
                           100,
                         ),
                       ),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 8.0,
+                      ),
                       hintText: "Search",
                       prefixIcon: Icon(
                         Icons.search,
@@ -77,6 +80,7 @@ class Header extends StatelessWidget {
                   child: Row(
                     children: [
                       const CircleAvatar(
+                        radius: 15,
                         backgroundImage: NetworkImage(
                           "https://avatars.githubusercontent.com/u/61038161?v=4",
                         ),
