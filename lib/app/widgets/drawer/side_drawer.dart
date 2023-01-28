@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/app/constants/themes/app_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -45,10 +46,10 @@ class SideDrawer extends StatelessWidget {
                 const SizedBox(height: 16.0),
                 DrawerListTile(
                   leading: const Icon(
-                    Icons.home_work_rounded,
+                    Icons.dashboard,
                   ),
                   title: Text(
-                    "Home",
+                    "Dashboard",
                     style: Get.textTheme.titleMedium,
                   ),
                   trailing: Badge(

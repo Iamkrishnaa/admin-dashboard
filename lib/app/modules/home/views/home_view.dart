@@ -1,8 +1,11 @@
+import 'package:admin_dashboard/app/constants/constants.dart';
 import 'package:admin_dashboard/app/modules/home/controllers/home_controller.dart';
 import 'package:admin_dashboard/app/utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import '../../../widgets/drawer/side_drawer.dart';
+import '../../../widgets/header/header.dart';
 
 class HomeView extends StatelessWidget {
   HomeView({
@@ -17,12 +20,28 @@ class HomeView extends StatelessWidget {
       drawerEnableOpenDragGesture: !Responsive.isDesktop(context),
       drawer: SideDrawer(),
       body: Responsive(
-        mobile: Container(),
-        tablet: Container(),
+        mobile: Container(
+          child: Header(),
+        ),
+        tablet: Container(
+          child: Header(),
+        ),
         desktop: Container(
           child: Row(
             children: [
               SideDrawer(),
+              Expanded(
+                child: Container(
+                  child: Column(
+                    children: [
+                      const Header(),
+                      Expanded(
+                        child: Container(),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
