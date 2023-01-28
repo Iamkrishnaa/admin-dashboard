@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import 'app/constants/constants.dart';
 import 'app/routes/app_pages.dart';
@@ -10,6 +11,7 @@ import 'app/utils/languages.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setPathUrlStrategy();
   await Hive.initFlutter();
   runApp(
     const AdminDashBoard(),

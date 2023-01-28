@@ -7,8 +7,9 @@ enum ThemeCategory { light, dark, system }
 class ThemeService extends GetxService {
   static late ThemeCategory selectedTheme;
   late Box box;
-  static initializeTheme() {
-    setAppTheme();
+
+  static initializeTheme() async {
+    await setAppTheme();
   }
 
   static setAppTheme() async {

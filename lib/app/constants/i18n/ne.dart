@@ -1,3 +1,5 @@
 class NepaliTranslation {
-  static Map<String, String> get getNepaliTranslation => {};
+  static Map<String, String> get getNepaliTranslation => {
+        "check": "nepali check",
+      };
 }
