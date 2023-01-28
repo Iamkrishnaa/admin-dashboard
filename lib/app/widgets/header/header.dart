@@ -90,30 +90,20 @@ class Header extends StatelessWidget {
                           width: 12.0,
                         ),
                       if (!Responsive.isMobile(context))
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Krishna Adhikari",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
-                                  ?.copyWith(
+                        Text(
+                          "Krishna Adhikari",
+                          style:
+                              Theme.of(context).textTheme.titleSmall?.copyWith(
                                     fontWeight: FontWeight.bold,
                                   ),
-                            ),
-                            Text(
-                              "@iamkrishnaa",
-                              style: TextStyle(
-                                color: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall
-                                    ?.color,
-                              ),
-                            ),
-                          ],
                         ),
+                      if (!Responsive.isMobile(context))
+                        const Padding(
+                          padding: EdgeInsets.only(left: 8.0),
+                          child: Icon(
+                            Icons.keyboard_arrow_down_rounded,
+                          ),
+                        )
                     ],
                   ),
                 ),
