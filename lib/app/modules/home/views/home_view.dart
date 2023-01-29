@@ -21,30 +21,51 @@ class HomeView extends StatelessWidget {
       drawer: SideDrawer(),
       body: SafeArea(
         child: Responsive(
-          mobile: Container(
-            child: Header(),
+          mobile: Column(
+            children: const [
+              Header(),
+            ],
           ),
-          tablet: Container(
-            child: Header(),
+          tablet: Column(
+            children: const [
+              Header(),
+            ],
           ),
-          desktop: Container(
-            child: Row(
-              children: [
-                SideDrawer(),
-                Expanded(
-                  child: Container(
-                    child: Column(
-                      children: [
-                        const Header(),
-                        Expanded(
-                          child: Container(),
+          desktop: Row(
+            children: [
+              SideDrawer(),
+              Expanded(
+                child: Column(
+                  children: [
+                    const Header(),
+                    Expanded(
+                      child: Container(
+                        padding: const EdgeInsets.all(16.0),
+                        child: GridView.builder(
+                          itemCount: 100,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 8.0,
+                            mainAxisSpacing: 8.0,
+                            childAspectRatio: 4 / 3,
+                          ),
+                          itemBuilder: (BuildContext context, int index) {
+                            return Card(
+                              child: Center(
+                                child: Text(
+                                  "hello $index",
+                                ),
+                              ),
+                            );
+                          },
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
