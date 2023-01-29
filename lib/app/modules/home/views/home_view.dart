@@ -39,27 +39,24 @@ class HomeView extends StatelessWidget {
                   children: [
                     const Header(),
                     Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.all(16.0),
-                        child: GridView.builder(
-                          itemCount: 100,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3,
-                            crossAxisSpacing: 8.0,
-                            mainAxisSpacing: 8.0,
-                            childAspectRatio: 4 / 3,
-                          ),
-                          itemBuilder: (BuildContext context, int index) {
-                            return Card(
-                              child: Center(
-                                child: Text(
-                                  "hello $index",
-                                ),
-                              ),
-                            );
-                          },
+                      child: GridView.builder(
+                        itemCount: 100,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          crossAxisSpacing: 8.0,
+                          mainAxisSpacing: 8.0,
+                          childAspectRatio: 4 / 3,
                         ),
+                        itemBuilder: (BuildContext context, int index) {
+                          return Card(
+                            child: Center(
+                              child: Text(
+                                "hello $index",
+                              ),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],

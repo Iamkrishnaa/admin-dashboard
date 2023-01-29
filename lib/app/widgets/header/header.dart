@@ -72,6 +72,15 @@ class Header extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.notifications,
+                ),
+              ),
+              const SizedBox(
+                width: 16.0,
+              ),
               InkWell(
                 onTap: () {},
                 borderRadius: BorderRadius.circular(100),
@@ -106,21 +115,6 @@ class Header extends StatelessWidget {
                         )
                     ],
                   ),
-                ),
-              ),
-              const SizedBox(
-                width: 16.0,
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.notifications,
-                ),
-              ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.apps,
                 ),
               ),
             ],
