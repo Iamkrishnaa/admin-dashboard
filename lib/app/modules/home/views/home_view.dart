@@ -1,8 +1,7 @@
-import 'package:admin_dashboard/app/constants/constants.dart';
+import 'package:admin_dashboard/app/modules/dashboard/views/dashboard_view.dart';
 import 'package:admin_dashboard/app/modules/home/controllers/home_controller.dart';
 import 'package:admin_dashboard/app/utils/responsive.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import '../../../widgets/drawer/side_drawer.dart';
 import '../../../widgets/header/header.dart';
@@ -39,24 +38,11 @@ class HomeView extends StatelessWidget {
                   children: [
                     const Header(),
                     Expanded(
-                      child: GridView.builder(
-                        itemCount: 100,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 8.0,
-                          mainAxisSpacing: 8.0,
-                          childAspectRatio: 4 / 3,
+                      child: Obx(
+                        () => homeController.getBody(
+                          homeController
+                              .sideMenuController.selectedNavigation.value,
                         ),
-                        itemBuilder: (BuildContext context, int index) {
-                          return Card(
-                            child: Center(
-                              child: Text(
-                                "hello $index",
-                              ),
-                            ),
-                          );
-                        },
                       ),
                     ),
                   ],
