@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
 class LanguageService extends GetxService {
-  late Box box;
+  Box box = Hive.box("adminPanel");
 
   static initializeLanguage() {
     setAppLocale();
@@ -15,14 +15,12 @@ class LanguageService extends GetxService {
   }
 
   saveAppLocale(String locale) async {
-    box = await Hive.openBox("language");
     if (box.isOpen) {
       box.put("appLocale", locale);
     }
   }
 
   loadLocaleFromStorage() async {
-    box = await Hive.openBox("language");
     String appLocale = box.get("appLocale") ??
         (Get.deviceLocale != null ? Get.deviceLocale!.languageCode : "");
 
@@ -30,13 +28,13 @@ class LanguageService extends GetxService {
   }
 
   static changeLocale({required String languageCode}) async {
-    Box box = await Hive.openBox("language");
+    Box box = Hive.box("adminPanel");
     box.put("appLocale", languageCode);
     setAppLocale();
   }
 
   static resetAppLocale() async {
-    Box box = await Hive.openBox("language");
+    Box box = Hive.box("adminPanel");
     box.delete("appLocale");
   }
 }

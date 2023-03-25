@@ -6,7 +6,7 @@ enum ThemeCategory { light, dark, system }
 
 class ThemeService extends GetxService {
   static late ThemeCategory selectedTheme;
-  late Box box;
+  Box box = Hive.box("adminPanel");
 
   static initializeTheme() async {
     await setAppTheme();
@@ -30,14 +30,12 @@ class ThemeService extends GetxService {
   }
 
   saveAppTheme(bool isDark) async {
-    box = await Hive.openBox("theme");
     if (box.isOpen) {
       box.put("isAppThemeDark", isDark);
     }
   }
 
   Future<ThemeCategory> loadThemeFromStorage() async {
-    box = await Hive.openBox("theme");
     if (box.isOpen) {
       bool? isDark = box.get("isAppThemeDark");
 
@@ -66,7 +64,7 @@ class ThemeService extends GetxService {
   }
 
   static resetTheme() async {
-    Box box = await Hive.openBox("theme");
+    Box box = Hive.box("adminPanel");
     if (box.isOpen) {
       box.delete("isAppThemeDark");
     }

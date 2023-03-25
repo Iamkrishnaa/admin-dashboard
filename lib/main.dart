@@ -11,8 +11,11 @@ import 'app/utils/languages.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   setPathUrlStrategy();
   await Hive.initFlutter();
+
+  await Hive.openBox("adminPanel");
   runApp(
     const AdminDashBoard(),
   );
@@ -39,7 +42,7 @@ class AdminDashBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: "Admin Dashboard",
+      title: "Admin Dashboard".tr,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       debugShowCheckedModeBanner: false,
