@@ -6,4 +6,10 @@ class AppConstant {
       SpinKitChasingDots(
         color: color,
       );
+  static OutlineInputBorder roundedInputBorder = OutlineInputBorder(
+    borderSide: BorderSide.none,
+    borderRadius: BorderRadius.circular(
+      100,
+    ),
+  );
 }
