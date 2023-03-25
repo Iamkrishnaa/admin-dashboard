@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../services/local/theme_service.dart';
 import '../../utils/responsive.dart';
 
 class Header extends StatelessWidget {
@@ -108,6 +110,33 @@ class Header extends StatelessWidget {
                           ),
                         ),
                         const PopupMenuDivider(),
+                        PopupMenuItem(
+                          child: ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            leading: const Icon(
+                              Icons.dark_mode,
+                            ),
+                            title: const Text(
+                              "Theme",
+                            ),
+                            trailing: StatefulBuilder(
+                                builder: (context, setInnerState) {
+                              return Switch(
+                                onChanged: (value) {
+                                  setInnerState(() {
+                                    ThemeService.changeTheme(
+                                      value
+                                          ? ThemeCategory.dark
+                                          : ThemeCategory.light,
+                                    );
+                                  });
+                                },
+                                value: ThemeService.selectedTheme ==
+                                    ThemeCategory.dark,
+                              );
+                            }),
+                          ),
+                        ),
                         const PopupMenuItem(
                           child: ListTile(
                             contentPadding: EdgeInsets.zero,
