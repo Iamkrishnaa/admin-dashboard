@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:get/get.dart';
 
 import '../modules/admin_dashboard/bindings/admin_dashboard_binding.dart';

@@ -53,9 +53,12 @@ class SideDrawer extends StatelessWidget {
                     style: Get.textTheme.titleMedium,
                   ),
                   trailing: Badge(
-                    label: Text(
-                      "New",
-                      style: Get.textTheme.labelSmall,
+                    label: Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: Text(
+                        "New",
+                        style: Get.textTheme.labelSmall,
+                      ),
                     ),
                     backgroundColor: const Color.fromARGB(255, 12, 99, 170),
                   ),

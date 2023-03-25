@@ -5,7 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 enum ThemeCategory { light, dark, system }
 
 class ThemeService extends GetxService {
-  static late ThemeCategory selectedTheme;
+  static ThemeCategory selectedTheme = ThemeCategory.system;
   Box box = Hive.box("adminPanel");
 
   static initializeTheme() async {

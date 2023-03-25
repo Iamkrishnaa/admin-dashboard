@@ -3,8 +3,19 @@ import 'package:admin_dashboard/app/modules/home/controllers/side_menu_controlle
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../services/local/language_service.dart';
+import '../../../services/local/theme_service.dart';
+
 class HomeController extends GetxController {
   final SideMenuController sideMenuController = Get.find();
+
+  @override
+  onInit() {
+    super.onInit();
+    ThemeService.initializeTheme();
+    LanguageService.initializeLanguage();
+  }
+
   List<Widget> body = [
     DashboardView(),
     Container(

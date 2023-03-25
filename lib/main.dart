@@ -6,6 +6,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 import 'app/constants/constants.dart';
+import 'app/modules/not_found/bindings/not_found_binding.dart';
+import 'app/modules/not_found/views/not_found_view.dart';
 import 'app/routes/app_pages.dart';
 import 'app/utils/languages.dart';
 
@@ -53,6 +55,11 @@ class AdminDashBoard extends StatelessWidget {
       translations: Languages(),
       locale: Get.deviceLocale,
       fallbackLocale: const Locale('en'),
+      unknownRoute: GetPage(
+        name: "/not-found",
+        page: () => const NotFoundView(),
+        binding: NotFoundBinding(),
+      ),
     );
   }
 }
