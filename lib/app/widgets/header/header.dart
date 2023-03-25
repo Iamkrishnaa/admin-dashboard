@@ -81,39 +81,83 @@ class Header extends StatelessWidget {
               const SizedBox(
                 width: 16.0,
               ),
-              InkWell(
-                onTap: () {},
+              ClipRRect(
                 borderRadius: BorderRadius.circular(100),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      const CircleAvatar(
-                        radius: 15,
-                        backgroundImage: NetworkImage(
-                          "https://avatars.githubusercontent.com/u/61038161?v=4",
-                        ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: PopupMenuButton(
+                    tooltip: "",
+                    onSelected: null,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(12.0),
                       ),
-                      if (Responsive.isDesktop(context))
-                        const SizedBox(
-                          width: 12.0,
+                    ),
+                    position: PopupMenuPosition.under,
+                    itemBuilder: (context) {
+                      return <PopupMenuEntry<dynamic>>[
+                        const PopupMenuItem(
+                          enabled: false,
+                          child: Text("Welcome Krishna!"),
                         ),
-                      if (!Responsive.isMobile(context))
-                        Text(
-                          "Krishna Adhikari",
-                          style:
-                              Theme.of(context).textTheme.titleSmall?.copyWith(
+                        const PopupMenuItem(
+                          child: ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            title: Text("View yout profile"),
+                            leading: Icon(Icons.person),
+                          ),
+                        ),
+                        const PopupMenuDivider(),
+                        const PopupMenuItem(
+                          child: ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            title: Text("Settings"),
+                            leading: Icon(Icons.settings),
+                          ),
+                        ),
+                        const PopupMenuItem(
+                          child: ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            title: Text("Logout"),
+                            leading: Icon(Icons.logout),
+                          ),
+                        ),
+                      ];
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          const CircleAvatar(
+                            radius: 15,
+                            backgroundImage: NetworkImage(
+                              "https://avatars.githubusercontent.com/u/61038161?v=4",
+                            ),
+                          ),
+                          // if (Responsive.isDesktop(context))
+                          const SizedBox(
+                            width: 12.0,
+                          ),
+                          if (!Responsive.isMobile(context))
+                            Text(
+                              "Krishna Adhikari",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleSmall
+                                  ?.copyWith(
                                     fontWeight: FontWeight.bold,
                                   ),
-                        ),
-                      if (!Responsive.isMobile(context))
-                        const Padding(
-                          padding: EdgeInsets.only(left: 8.0),
-                          child: Icon(
-                            Icons.keyboard_arrow_down_rounded,
-                          ),
-                        )
-                    ],
+                            ),
+                          if (!Responsive.isMobile(context))
+                            const Padding(
+                              padding: EdgeInsets.only(left: 8.0),
+                              child: Icon(
+                                Icons.keyboard_arrow_down_rounded,
+                              ),
+                            )
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ),
