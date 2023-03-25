@@ -1,5 +1,7 @@
+import 'package:admin_dashboard/app/constants/constants.dart';
 import 'package:flutter/material.dart';
-
+import 'package:intl/intl.dart';
+import 'package:timeago/timeago.dart' as timeago;
 import '../../services/local/theme_service.dart';
 import '../../utils/responsive.dart';
 import '../textfields/custom_rounded_textfield.dart';
@@ -55,12 +57,7 @@ class Header extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.notifications,
-                ),
-              ),
+              _buildNotificationSection(context),
               const SizedBox(
                 width: 16.0,
               ),
@@ -68,6 +65,146 @@ class Header extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  _buildNotificationSection(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(100),
+      child: Material(
+        color: Colors.transparent,
+        child: PopupMenuButton(
+          tooltip: "",
+          onSelected: null,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(12.0),
+            ),
+          ),
+          position: PopupMenuPosition.under,
+          itemBuilder: (context) {
+            return <PopupMenuEntry<dynamic>>[
+              PopupMenuItem(
+                enabled: false,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        "Notifications",
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: AppColor.darkCardColor,
+                        borderRadius: BorderRadius.circular(4.0),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 6.0,
+                        horizontal: 12.0,
+                      ),
+                      child: Text(
+                        "5 New",
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const PopupMenuDivider(),
+              PopupMenuItem(
+                child: ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: const Text("Profile Logged in from new ip address"),
+                  subtitle: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Center(
+                          child: Icon(
+                            Icons.access_time_rounded,
+                            size: 15,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 4.0,
+                        ),
+                        Expanded(
+                          child: Text(
+                            timeago.format(
+                              DateTime.now().subtract(
+                                const Duration(minutes: 10),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  minLeadingWidth: 10,
+                  leading: const CircleAvatar(
+                    maxRadius: 15,
+                    child: Icon(
+                      Icons.person,
+                      size: 15,
+                    ),
+                  ),
+                ),
+              ),
+              PopupMenuItem(
+                child: ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: const Text("Payment Reminder from bank"),
+                  subtitle: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const Center(
+                          child: Icon(
+                            Icons.access_time_rounded,
+                            size: 15,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 4.0,
+                        ),
+                        Expanded(
+                          child: Text(
+                            timeago.format(
+                              DateTime.now().subtract(
+                                const Duration(minutes: 100),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  minLeadingWidth: 10,
+                  leading: const CircleAvatar(
+                    maxRadius: 15,
+                    child: Icon(
+                      Icons.person,
+                      size: 15,
+                    ),
+                  ),
+                ),
+              ),
+            ];
+          },
+          child: const Icon(
+            Icons.notifications,
+          ),
+        ),
       ),
     );
   }
