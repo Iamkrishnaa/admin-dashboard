@@ -8,7 +8,7 @@ class Languages extends Translations {
         'ne': NepaliTranslation.getNepaliTranslation,
       };
 
-  Map<String, String> get countries => {
+  Map<String, String> get languages => {
         'en': "English",
         'ne': "नेपाली",
       };

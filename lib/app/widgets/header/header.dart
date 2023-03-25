@@ -1,4 +1,6 @@
 import 'package:admin_dashboard/app/constants/constants.dart';
+import 'package:admin_dashboard/app/services/local/language_service.dart';
+import 'package:admin_dashboard/app/utils/languages.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -57,6 +59,10 @@ class Header extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              _buildLanguagePicker(),
+              const SizedBox(
+                width: 16.0,
+              ),
               _buildNotificationSection(context),
               const SizedBox(
                 width: 16.0,
@@ -66,6 +72,48 @@ class Header extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  _buildLanguagePicker() {
+    return PopupMenuButton(
+      tooltip: "",
+      onSelected: null,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(12.0),
+        ),
+      ),
+      position: PopupMenuPosition.under,
+      itemBuilder: (context) {
+        return List.generate(
+          Languages().languages.length,
+          (index) {
+            MapEntry<String, String> lang =
+                Languages().languages.entries.elementAt(index);
+            return PopupMenuItem(
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      lang.value,
+                    ),
+                  ),
+                  Text(
+                    lang.key,
+                  ),
+                ],
+              ),
+              onTap: () {
+                LanguageService.changeLocale(
+                  languageCode: lang.key,
+                );
+              },
+            );
+          },
+        );
+      },
+      child: const Icon(Icons.language),
     );
   }
 
