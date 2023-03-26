@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 
 class SideMenuController extends GetxController {
-  var selectedNavigation = 0.obs;
+  var selectedNavigation = "/admin/dashboard".obs;
 
-  changeNavigation(int index) {
-    selectedNavigation.value = index;
+  changeNavigation(String route) {
+    selectedNavigation.value = route;
     update();
   }
 }

@@ -20,11 +20,20 @@ class AppPages {
 
   static const INITIAL = Routes.ADMIN_DASHBOARD;
 
+  //TODO: Need to add auth middleware
   static final routes = [
     GetPage(
       name: _Paths.HOME,
       page: () => HomeView(),
       binding: HomeBinding(),
+      children: [
+        GetPage(
+          name: _Paths.DASHBOARD,
+          page: () => const DashboardView(),
+          binding: DashboardBinding(),
+          transition: Transition.noTransition,
+        ),
+      ],
     ),
     GetPage(
       name: _Paths.LOGIN,
@@ -40,11 +49,6 @@ class AppPages {
       name: _Paths.ADMIN_DASHBOARD,
       page: () => AdminDashboardView(),
       binding: AdminDashboardBinding(),
-    ),
-    GetPage(
-      name: _Paths.DASHBOARD,
-      page: () => const DashboardView(),
-      binding: DashboardBinding(),
     ),
   ];
 }

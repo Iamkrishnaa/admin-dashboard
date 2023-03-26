@@ -1,11 +1,10 @@
-import 'package:admin_dashboard/app/constants/themes/app_color.dart';
+import 'package:admin_dashboard/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../constants/assets_path.dart';
 import '../../modules/home/controllers/side_menu_controller.dart';
-import '../../services/local/theme_service.dart';
 import 'drawer_listtile.dart';
 
 class SideDrawer extends StatelessWidget {
@@ -62,31 +61,12 @@ class SideDrawer extends StatelessWidget {
                     ),
                     backgroundColor: const Color.fromARGB(255, 12, 99, 170),
                   ),
-                  isActive: 0 == controller.selectedNavigation.value,
+                  isActive:
+                      Routes.DASHBOARD == controller.selectedNavigation.value,
                   onTap: () {
-                    controller.changeNavigation(0);
+                    Get.toNamed(Routes.DASHBOARD);
+                    controller.changeNavigation(Routes.DASHBOARD);
                   },
-                ),
-                DrawerListTile(
-                  leading: const Icon(
-                    Icons.dark_mode,
-                  ),
-                  title: Text(
-                    "Theme",
-                    style: Get.textTheme.titleMedium,
-                  ),
-                  onTap: () {
-                    controller.changeNavigation(1);
-                  },
-                  isActive: 1 == controller.selectedNavigation.value,
-                  trailing: Switch(
-                    onChanged: (value) {
-                      ThemeService.changeTheme(
-                        value ? ThemeCategory.dark : ThemeCategory.light,
-                      );
-                    },
-                    value: ThemeService.selectedTheme == ThemeCategory.dark,
-                  ),
                 ),
               ],
             ),

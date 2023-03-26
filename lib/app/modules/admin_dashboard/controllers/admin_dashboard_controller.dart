@@ -14,6 +14,6 @@ class AdminDashboardController extends GetxController {
     await ThemeService.initializeTheme();
     await LanguageService.initializeLanguage();
 
-    Get.offAllNamed("home");
+    Get.offAllNamed("admin");
   }
 }

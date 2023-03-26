@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:admin_dashboard/app/modules/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -18,6 +21,9 @@ void main() async {
   await Hive.initFlutter();
 
   await Hive.openBox("adminPanel");
+
+  HomeController.initializeRequiredDependencies();
+
   runApp(
     const AdminDashBoard(),
   );
