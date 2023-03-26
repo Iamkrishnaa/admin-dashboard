@@ -22,7 +22,7 @@ void main() async {
 
   await Hive.openBox("adminPanel");
 
-  HomeController.initializeRequiredDependencies();
+  await HomeController.initializeRequiredDependencies();
 
   runApp(
     const AdminDashBoard(),

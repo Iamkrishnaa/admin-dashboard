@@ -6,12 +6,14 @@ import '../../../services/local/theme_service.dart';
 class HomeController extends GetxController {
   @override
   onInit() {
+    initializeRequiredDependencies();
     super.onInit();
-    ThemeService.initializeTheme();
-    LanguageService.initializeLanguage();
   }
 
-  static initializeRequiredDependencies() {
+  static initializeRequiredDependencies() async {
+    await ThemeService.initializeTheme();
+    await LanguageService.initializeLanguage();
+
     Get.lazyPut<SideMenuController>(
       () => SideMenuController(),
     );
