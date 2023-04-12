@@ -64,9 +64,27 @@ class SideDrawer extends StatelessWidget {
                   isActive:
                       Routes.DASHBOARD == controller.selectedNavigation.value,
                   onTap: () {
-                    Get.toNamed(Routes.DASHBOARD);
                     controller.changeNavigation(Routes.DASHBOARD);
                   },
+                ),
+                ExpansionTile(
+                  title: const Text("Pages"),
+                  children: [
+                    DrawerListTile(
+                      leading: const Icon(
+                        Icons.table_chart_sharp,
+                      ),
+                      title: Text(
+                        "Datatables",
+                        style: Get.textTheme.titleMedium,
+                      ),
+                      isActive: Routes.DATATABLES ==
+                          controller.selectedNavigation.value,
+                      onTap: () {
+                        controller.changeNavigation(Routes.DATATABLES);
+                      },
+                    ),
+                  ],
                 ),
               ],
             ),

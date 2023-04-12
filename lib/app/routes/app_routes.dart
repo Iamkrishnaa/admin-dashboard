@@ -10,6 +10,7 @@ abstract class Routes {
   static const REGISTER = _Paths.REGISTER;
   static const ADMIN_DASHBOARD = _Paths.ADMIN_DASHBOARD;
   static const DASHBOARD = _Paths.HOME + _Paths.DASHBOARD;
+  static const DATATABLES = _Paths.HOME + _Paths.DATATABLES;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const REGISTER = '/register';
   static const ADMIN_DASHBOARD = '/admin-dashboard';
   static const DASHBOARD = '/dashboard';
+  static const DATATABLES = '/datatables';
 }
